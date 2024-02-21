@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    
+    <!-- wrapper section -->
+    <div class="Wrapper">
+
+        <!-- weather app main heading -->
+        <h1>WEATHER APP</h1>
+
+        <!-- tab-container -->
+        <div class="tabContainer">
+
+            <!-- your-Weather tab -->
+            <button your-Weather>
+                Your Weather
+            </button>
+
+            <!-- search weather tab -->
+            <button search-Weather>
+                Search Weather
+            </button>
+
+        </div>
+
+        <!-- main container your weather -->
+        <div class="yourWeatherContainer" default-Container>
+
+            <!-- Flag and location box -->
+            <div class="flagLocation">
+
+                <p Your-Location></p>
+
+                <img src="" alt="" flag-Img>
+            
+            </div>
+
+            <!-- Weather status text -->
+            <p weather-Status> </p>
+
+            <!-- weather icon image -->
+            <img src="" alt="" weather-Icon>
+
+            <!-- temperature in degree celsius -->
+            <p temperature-Celsius> </p>
+
+
+            <!-- Card- container -->
+
+            <div class="cardContainer">
+
+
+                <!--Card 1-->
+                <div class="card1">
+
+                    <img src="./assets/wind.png" alt="">
+                    
+                    <p> WINDSPEED</p>
+
+                    <p speedOfWind></p>
+
+                </div>
+
+                <!--Card 2-->
+                <div class="card2">
+
+                    <img src="./assets/humidity.png" alt="">
+                    
+                    <p> HUMIDITY</p>
+
+                    <p Humidity></p>
+
+                </div>
+
+                <!--Card 3-->
+                <div class="card3">
+
+                    <img src="./assets/cloud.png" alt="">
+                    
+                    <p> CLOUD</p>
+
+                    <p cloud></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Search Weather section -->
+        <form action="#" search-Form>
+
+            <!-- search field -->
+            <input type="text" name="" id="" search-Field>
+
+            <!-- Submit button -->
+            <button submit-Button>
+
+                <img src="./assets/search.png" alt="" width="50px" height="50px">
+
+            </button>
+
+        </form>
+
+
+        <!-- Grant Access section -->
+        <div class="grantAccess">
+
+            <img src="./assets/location.png" alt="">
+
+            <h2 >Grant Location Access</h2>
+
+            <p>Allow Access To Get Weather Information</p>
+
+            <button grant-Access-button>GRANT ACCESS</button>
+
+        </div>
+
+
+        <!-- Loding gif section -->
+
+        <div loading-gif>
+
+            <img src="./assets/loading.gif" alt="">
+
+            <p>Loading..</p>
+
+        </div>
+
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
