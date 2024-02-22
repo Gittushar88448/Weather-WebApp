@@ -75,3 +75,25 @@ async function fetchUserWeatherInfo(coordinates){
         console.error(e);
     }
 }
+
+function renderInfo(data){
+
+    const locationName = document.querySelector('Your-Location');
+    const flagImage = document.querySelector('flag-Img');
+    const weatherDescription = document.querySelector('weather-Status');
+    const weatherDescriptionIcon = document.querySelector('weather-Icon');
+    const temperature = document.querySelector('temperature-Celsius');
+    const windSpeed = document.querySelector('speedOfWind');
+    const humidity = document.querySelector('Humidity');
+    const clouds = document.querySelector('cloud');
+
+    locationName.innerText = data?.name;
+    flagImage.src =  `https://flagcdn.com/144x108/${data?.sys?.country.toLowerCase()}.png`;
+    weatherDescription.innerText = data?.weather?.[0]?.description;
+    weatherDescriptionIcon.src = `https://flagcdn.com/144x108/${data?.weather?.[0]?.icon}.png`;
+    temperature.innerText = data?.main?.temp;
+    windSpeed.innerText = data?.wind?.speed;
+    humidity.innerText = data?.main?.humidity;
+    clouds.innerText = data?.cloud?.all;
+
+}   
