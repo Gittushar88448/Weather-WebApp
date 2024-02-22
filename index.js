@@ -46,3 +46,14 @@ searchWeatherTab.addEventListener('click' , ()=>{
 });
 
 
+
+function getSessionStorage(){
+    let localCoordinates = sessionStorage.getItem('user-Coordinates');
+    if(!localCoordinates){
+        grantAccessSection.classList.add('active');
+    }
+    else{
+        const coordinates = JSON.parse(localCoordinates);
+        fetchUserWeatherInfo(coordinates);
+    }
+}
