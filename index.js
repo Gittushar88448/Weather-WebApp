@@ -57,3 +57,21 @@ function getSessionStorage(){
         fetchUserWeatherInfo(coordinates);
     }
 }
+
+async function fetchUserWeatherInfo(coordinates){
+    const {lat , lon} = coordinates;
+    grantAccessSection.classList.remove('active');
+    loadingGif.classList.add('active');
+
+    try{
+        let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
+        let data = await response.json();
+        loadingGif.classList.remove('active');
+        yourWeatherContainer.classList.add('active');
+        renderInfo(data);
+    }
+    catch(e){
+        // after css implimentation w'll solve the catch block
+        console.error(e);
+    }
+}
