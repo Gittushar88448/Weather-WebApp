@@ -95,5 +95,25 @@ function renderInfo(data){
     windSpeed.innerText = data?.wind?.speed;
     humidity.innerText = data?.main?.humidity;
     clouds.innerText = data?.cloud?.all;
-
 }   
+
+grantAccessButton.addEventListener('click' , getLocation);
+
+function getLocation(){
+    if(nevigator.geolocation){
+        nevigator.geolocation.getCurrentPosition(showPosition)
+    }
+    else{
+        //later write else condition
+    }
+}
+
+function showPosition(position){
+    let userCurrentLoc = {
+        lat : position.coords.latitude,
+        lon : position.coords.longitude,
+    };
+
+    sessionStorage.setItem("user-Coordinates" , JSON.stringify(userCurrentLoc));
+    fetchUserWeatherInfo(userCurrentLoc);
+}
