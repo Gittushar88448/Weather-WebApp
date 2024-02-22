@@ -16,9 +16,9 @@ yourLocationTab.classList.add("current-tab");
 
 function switchTab(newTab){
     if(newTab != yourLocationTab){
-        yourWeatherContainer.classList.remove('active');
-        yourWeatherContainer = newTab;
-        yourWeatherContainer.classList.add('active');
+        yourLocationTab.classList.remove('current-tab');
+        yourLocationTab = newTab;
+        yourLocationTab.classList.add('current-tab');
 
         if(!searchWeatherForm.classList.contains('active')){
             searchWeatherForm.classList.add('active');
@@ -36,8 +36,8 @@ function switchTab(newTab){
 }
 
 
-yourLocationTab.addEventListener('click' , ()=>{
-    switchTab(yourLocationTab);
+yourWeatherTab.addEventListener('click' , ()=>{
+    switchTab(yourWeatherTab);
 });
 
 
