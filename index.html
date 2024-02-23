@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet" />
 </head>
+
 <body>
-    
     <!-- wrapper section -->
     <div class="Wrapper">
 
@@ -18,123 +24,108 @@
         <div class="tabContainer">
 
             <!-- your-Weather tab -->
-            <p your-Weather class="btn">
-                Your Weather
-            </p>
+            <p your-Weather class="btn">Your Weather</p>
 
             <!-- search weather tab -->
-            <p search-Weather class="btn">
-                Search Weather
-            </p>
-
+            <p search-Weather class="btn">Search Weather</p>
         </div>
 
-        <!-- main container your weather -->
-        <div class="yourWeatherContainer" default-Container>
+        <div class="mainContainer">
 
-            <!-- Flag and location box -->
-            <div class="flagLocation">
 
-                <p Your-Location></p>
+            <!-- Grant Access section -->
+            <div grant-Section class= "grantAccess commonContainer">
+                <img src="./assets/location.png" alt="" height="120px" width="120px" />
 
-                <img flag-Img>
-            
+                <h2>Grant Location Access</h2>
+
+                <p>Allow Access To Get Weather Information</p>
+
+                <button grant-Access-button>GRANT ACCESS</button>
             </div>
 
-            <!-- Weather status text -->
-            <p weather-Status> </p>
 
-            <!-- weather icon image -->
-            <img weather-Icon>
+            <!-- Search Weather section -->
+            <form class="form-search" search-Form>
+                <!-- search field -->
+                <input type="text" name="" id="" search-Field placeholder="Search for city..." />
 
-            <!-- temperature in degree celsius -->
-            <p temperature-Celsius> </p>
-
-
-            <!-- Card- container -->
-
-            <div class="cardContainer">
+                <!-- Submit button -->
+                <button class="searchBtn" type="submit">
+                    <img src="./assets/search.png" alt="" width="20px" height="20px" />
+                </button>
+            </form>
 
 
-                <!--Card 1-->
-                <div class="card1">
+            <!-- main container your weather -->
+            <div class="commonContainer yourWeatherContainer" default-Container>
 
-                    <img src="./assets/wind.png" alt="">
-                    
-                    <p> WINDSPEED</p>
+                <!-- Flag and location box -->
+                <div class="flagLocation">
+                    <p Your-Location></p>
 
-                    <p speedOfWind></p>
-
+                    <img class="flagImg" flag-Img />
                 </div>
 
-                <!--Card 2-->
-                <div class="card2">
+                <!-- Weather status text -->
+                <p weather-Status></p>
 
-                    <img src="./assets/humidity.png" alt="">
-                    
-                    <p> HUMIDITY</p>
+                <!-- weather icon image -->
+                <img class="weatherIcon" weather-Icon />
 
-                    <p Humidity></p>
+                <!-- temperature in degree celsius -->
+                <p temperature-Celsius></p>
 
+                <!-- Card- container -->
+
+                <div class="cardContainer">
+                    <!--Card 1-->
+                    <div class="card">
+                        <img src="./assets/wind.png" alt="" />
+
+                        <p>WINDSPEED</p>
+
+                        <p speedOfWind></p>
+                    </div>
+
+                    <!--Card 2-->
+                    <div class="card">
+                        <img src="./assets/humidity.png" alt="" />
+
+                        <p>HUMIDITY</p>
+
+                        <p Humidity></p>
+                    </div>
+
+                    <!--Card 3-->
+                    <div class="card">
+                        <img src="./assets/cloud.png" alt="" />
+
+                        <p>CLOUD</p>
+
+                        <p cloud></p>
+                    </div>
                 </div>
-
-                <!--Card 3-->
-                <div class="card3">
-
-                    <img src="./assets/cloud.png" alt="">
-                    
-                    <p> CLOUD</p>
-
-                    <p cloud></p>
-
-                </div>
-
             </div>
 
+
+
+            <div show-Error class="errorSection commonContainer">
+                <img  src="./assets/not-found.png" width="180" height="180">
+                
+            </div>
+
+            <!-- Loding gif section -->
+
+            <div class="loading-container commonContainer" loading-gif>
+                <img src="./assets/loading.gif" alt="" height="150px" width="150px" />
+
+                <p>Loading..</p>
+            </div>
         </div>
-
-        <!-- Search Weather section -->
-        <form class="form-search" search-Form>
-
-            <!-- search field -->
-            <input type="text" name="" id="" search-Field placeholder="Search for city...">
-
-            <!-- Submit button -->
-            <button class="searchBtn" type="submit">
-
-                <img src="./assets/search.png" alt="" width="20px" height="20px">
-
-            </button>
-
-        </form>
-
-
-        <!-- Grant Access section -->
-        <div class="grantAccess" grant-Section>
-
-            <img src="./assets/location.png" alt="" height="120px" width="120px">
-
-            <h2 >Grant Location Access</h2>
-
-            <p>Allow Access To Get Weather Information</p>
-
-            <button grant-Access-button>GRANT ACCESS</button>
-
-        </div>
-
-
-        <!-- Loding gif section -->
-
-        <div loading-gif>
-
-            <img src="./assets/loading.gif" alt="" height="150px" width="150px">
-
-            <p>Loading..</p>
-
-        </div>
-
     </div>
 
     <script src="./index.js"></script>
 </body>
+
 </html>
