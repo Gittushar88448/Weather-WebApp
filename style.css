@@ -1,0 +1,240 @@
+*,*::before,*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+:root{
+    --colorDark1: #112D4E;
+    --colorDark2: #3F72AF;
+    --colorLight1: #DBE2EF;
+    --colorLight2: #F9F7F7;
+}
+
+body {
+    max-width: 100vw;
+    min-height: 100vh;
+    color: var(--colorLight2);
+    background-color: #112d4e;
+    background-image: linear-gradient(160deg, #112d4e 0%, #3f72af 100%);
+}
+
+h1{
+    text-align: center;
+    padding-top: 20px;
+    letter-spacing: 2px;
+}
+
+.tabContainer{
+    width: 90%;
+    max-width: 550px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4rem;
+
+}
+
+.btn{
+    cursor: pointer;
+    font-size: 0.875rem;
+    letter-spacing: 1.75px;
+    padding: 5px 8px;
+}
+
+.current-tab{
+    background-color: rgba(219, 226, 239, 0.5);
+    border-radius: 4px;
+}
+
+.mainContainer{
+    margin-block: 4rem;
+}
+
+.commonContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.yourWeatherContainer{
+    display: none;
+}
+
+.yourWeatherContainer.active{
+    display: flex;
+}
+
+
+.flagLocation{
+    display: flex;
+    align-items: center;
+    gap: 0 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.flagLocation p:first-of-type{
+    font-size:2rem;
+    font-weight:200;
+}
+
+.flagLocation .flagImg{
+    width: 30px;
+    height:30px;
+    object-fit: contain;
+}
+
+.yourWeatherContainer p{
+    font-size:1.5rem;
+    font-weight:200;
+}
+
+.weatherIcon{
+    width: 90px;
+    height: 90px;
+}
+
+p[temperature-Celsius]{
+    font-size:2.75rem;
+    font-weight:700;
+}
+
+.cardContainer{
+    display: flex;
+    width:90%;
+    gap: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.card{
+    width:30%;
+    max-width:200px;
+    background-color: rgba(219, 226, 239, 0.5);;
+    border-radius: 5px;
+    padding:1rem;
+    display: flex;
+    flex-direction: column;
+    gap:5px 0;
+    align-items: center;
+}
+
+.card img{
+    width:50px;
+    height:50px;
+}
+
+.card p:first-of-type{
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+
+.form-search{
+    display: none;
+    width:90%;
+    max-width:550px;
+    margin:0 auto;
+    justify-content: center;
+    align-items: center;
+    gap: 0 10px; 
+    margin-bottom: 3rem;
+}
+
+.form-search.active{
+    display: flex;
+}
+
+.form-search input{
+    all:unset;
+    width: calc(100% - 80px);
+    height:40px;
+    padding: 0 20px;
+    background-color:rgba(219, 226, 239, 0.5);
+    border-radius: 10px;
+}
+
+.form-search input::placeholder{
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-search input:focus{
+    outline: 3px solid rgba(255, 255, 255, 0.7);
+}
+
+.form-search .searchBtn{
+    all: unset;
+    background-color: #3f72Af;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    margin-bottom:1px;
+    cursor: pointer;
+}
+
+.grantAccess{
+   display: none;
+}
+
+
+div[grant-Section].active{
+    display: flex;
+
+}
+
+.grantAccess img{
+    margin-bottom: 2rem;
+}
+
+.grantAccess h2{
+    font-size: 1.75rem;
+    font-weight: 600;     
+}
+
+.grantAccess p:first-of-type{
+    font-size:0.85rem;
+    font-weight: 500;
+    margin-top: 0.75rem;
+    margin-bottom: 1.75rem;
+    letter-spacing: 0.75px;
+}
+
+.grantAccess button[grant-Access-button]{
+
+    all: unset;
+    font-size: 0.85rem;
+    border-radius: 5px;
+    background-color: var(--colorDark2);
+    cursor: pointer;
+    padding: 10px 30px;
+    margin-bottom: 10px;
+}
+
+.loading-container{
+    display: none;
+}
+
+.loading-container.active{
+    display: flex;
+}
+
+.loading-container p{
+    text-transform: uppercase;
+}
+
+.errorSection{
+    display: none;
+}
+
+.errorSection.active{
+    display: flex;
+}
+
+.errorSection p{
+    text-transform: uppercase;
+}
