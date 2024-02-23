@@ -1,17 +1,18 @@
-const yourWeatherTab = document.querySelector("[your-Weather]");
+const yourWeatherTab = document.querySelector('[your-Weather]');
 const searchWeatherTab = document.querySelector('[search-Weather]');
-const yourWeatherContainer = document.querySelector("default-Container");
-const searchWeatherForm = document.querySelector("search-Form");
-const grantAccessSection = document.getElementsByClassName("grantAccess");
-const loadingGif = document.querySelector("loading-gif");
-const inputSubmitButton  = document.querySelector("submit-Button");
-const grantAccessButton = document.querySelector("grant-Access-button");
+const yourWeatherContainer = document.querySelector("[default-Container]");
+const searchWeatherForm = document.querySelector("[search-Form]");
+const grantAccessSection = document.querySelector("[grant-Section]");
+const loadingGif = document.querySelector("[loading-gif]");
+const inputSubmitButton  = document.querySelector("[submit-Button]");
+const grantAccessButton = document.querySelector("[grant-Access-button]");
 
 
 
 let yourLocationTab = yourWeatherTab;
-const API_KEY = "d1845658f92b31c64bd94f06f7188c9c";
+const API_KEY = "23abca252a2453ad4065070cde4439da";
 yourLocationTab.classList.add("current-tab");
+getSessionStorage();
 
 
 function switchTab(newTab){
@@ -28,7 +29,7 @@ function switchTab(newTab){
         }
 
         else{
-            searchWeatherForm.classList.add('active');
+            searchWeatherForm.classList.remove('active');
             yourWeatherContainer.classList.remove('active');
             getSessionStorage();
         }
@@ -36,21 +37,21 @@ function switchTab(newTab){
 }
 
 
-yourWeatherTab.addEventListener('click' , ()=>{
+yourWeatherTab.addEventListener("click" , ()=>{
     switchTab(yourWeatherTab);
 });
 
 
-searchWeatherTab.addEventListener('click' , ()=>{
+searchWeatherTab.addEventListener("click" , ()=>{
     switchTab(searchWeatherTab);
 });
 
 
 
 function getSessionStorage(){
-    let localCoordinates = sessionStorage.getItem('user-Coordinates');
+    const localCoordinates = sessionStorage.getItem('user-Coordinates');
     if(!localCoordinates){
-        grantAccessSection.classList.add('active');
+        grantAccessSection.classList.add("active'");
     }
     else{
         const coordinates = JSON.parse(localCoordinates);
@@ -58,8 +59,8 @@ function getSessionStorage(){
     }
 }
 
-async function fetchUserWeatherInfo(coordinates){
-    const {lat , lon} = coordinates;
+async function fetchUserWeatherInfo(coordinate){
+    const {lat , lon} = coordinate;
     grantAccessSection.classList.remove('active');
     loadingGif.classList.add('active');
 
@@ -78,38 +79,38 @@ async function fetchUserWeatherInfo(coordinates){
 
 function renderInfo(data){
 
-    const locationName = document.querySelector('Your-Location');
-    const flagImage = document.querySelector('flag-Img');
-    const weatherDescription = document.querySelector('weather-Status');
-    const weatherDescriptionIcon = document.querySelector('weather-Icon');
-    const temperature = document.querySelector('temperature-Celsius');
-    const windSpeed = document.querySelector('speedOfWind');
-    const humidity = document.querySelector('Humidity');
-    const clouds = document.querySelector('cloud');
+    const locationName = document.querySelector('[Your-Location]');
+    const flagImage = document.querySelector('[flag-Img]');
+    const weatherDescription = document.querySelector('[weather-Status]');
+    const weatherDescriptionIcon = document.querySelector('[weather-Icon]');
+    const temperature = document.querySelector('[temperature-Celsius]');
+    const windSpeed = document.querySelector('[speedOfWind]');
+    const humidity = document.querySelector('[Humidity]');
+    const clouds = document.querySelector('[cloud]');
 
     locationName.innerText = data?.name;
     flagImage.src =  `https://flagcdn.com/144x108/${data?.sys?.country.toLowerCase()}.png`;
     weatherDescription.innerText = data?.weather?.[0]?.description;
-    weatherDescriptionIcon.src = `https://flagcdn.com/144x108/${data?.weather?.[0]?.icon}.png`;
+    weatherDescriptionIcon.src = `https://openweathermap.org/img/wn/${data?.weather?.[0]?.icon}.png`;
     temperature.innerText = data?.main?.temp;
     windSpeed.innerText = data?.wind?.speed;
     humidity.innerText = data?.main?.humidity;
-    clouds.innerText = data?.cloud?.all;
+    clouds.innerText = data?.clouds?.all;
 }   
 
-grantAccessButton.addEventListener('click' , getLocation);
+grantAccessButton.addEventListener("click", getLocation);
 
-function getLocation(){
-    if(nevigator.geolocation){
-        nevigator.geolocation.getCurrentPosition(showPosition)
+function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
     }
     else{
-        //later write else condition
+        console.log('location is not rendering');
     }
 }
 
 function showPosition(position){
-    let userCurrentLoc = {
+    const userCurrentLoc = {
         lat : position.coords.latitude,
         lon : position.coords.longitude,
     };
@@ -117,3 +118,4 @@ function showPosition(position){
     sessionStorage.setItem("user-Coordinates" , JSON.stringify(userCurrentLoc));
     fetchUserWeatherInfo(userCurrentLoc);
 }
+
