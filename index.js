@@ -51,7 +51,7 @@ searchWeatherTab.addEventListener("click" , ()=>{
 function getSessionStorage(){
     const localCoordinates = sessionStorage.getItem('user-Coordinates');
     if(!localCoordinates){
-        grantAccessSection.classList.add("active'");
+        grantAccessSection.classList.add("active");
     }
     else{
         const coordinates = JSON.parse(localCoordinates);
@@ -72,6 +72,7 @@ async function fetchUserWeatherInfo(coordinate){
         renderInfo(data);
     }
     catch(e){
+        loadingGif.classList.remove('active');
         // after css implimentation w'll solve the catch block
         console.error(e);
     }
@@ -92,10 +93,10 @@ function renderInfo(data){
     flagImage.src =  `https://flagcdn.com/144x108/${data?.sys?.country.toLowerCase()}.png`;
     weatherDescription.innerText = data?.weather?.[0]?.description;
     weatherDescriptionIcon.src = `https://openweathermap.org/img/wn/${data?.weather?.[0]?.icon}.png`;
-    temperature.innerText = data?.main?.temp;
-    windSpeed.innerText = data?.wind?.speed;
-    humidity.innerText = data?.main?.humidity;
-    clouds.innerText = data?.clouds?.all;
+    temperature.innerText = `${data?.main?.temp +" °C"}`;
+    windSpeed.innerText = `${data?.wind?.speed +"m/s"}`;
+    humidity.innerText = `${data?.main?.humidity +"%"}`;
+    clouds.innerText = `${data?.clouds?.all +"%"}`;
 }   
 
 grantAccessButton.addEventListener("click", getLocation);
@@ -129,14 +130,17 @@ searchWeatherForm.addEventListener("submit",(e) => {
     }
     else{
         fetchSearchWeatherInfo(getValue);
+        inputSearch.value = "";
     }
 });
 
+const showingError = document.querySelector('[show-Error]');
  async function fetchSearchWeatherInfo(city){
     
     grantAccessSection.classList.remove('active');
     yourWeatherContainer.classList.remove('active');
     loadingGif.classList.add('active');
+
 
     try{
         let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
@@ -146,7 +150,22 @@ searchWeatherForm.addEventListener("submit",(e) => {
         renderInfo(data);
     }
     catch(e){
-        console.error(e);
-    }
+            let err = e.json()
+            showErrorDisplay(err);
+            console.log("ye tuune kya kiya");
 
+     }
+
+
+}
+
+function showErrorDisplay(error){
+    if(err?.cod == "404"){
+        const newErrorMsg = document.createElement('p');
+        newErrorMsg.innerText = `${e.message}`;
+        showingError.appendChild(newErrorMsg);
+        yourWeatherContainer.classList.remove('active');
+        searchWeatherForm.classList.remove('active');
+        showingError.classList.add('active');
+    }
 }
